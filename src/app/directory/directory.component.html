@@ -1,12 +1,15 @@
 <h2>Ninja Listing</h2>
-
+<form id="filter">
+  <label>Filter ninjas by name:</label>
+  <input type="text" [(ngModel)]="term" [ngModelOptions]="{standalone: true}" />
+</form>
 <ul id="ninja-listing">
-  <li *ngFor="let ninja of ninjas">
+  <li *ngFor="let ninja of ninjas | filter:term">
     <div class="single-ninja">
       <!-- belt color -->
       <span [ngStyle]="{background: ninja.belt}">{{ninja.belt}} belt</span>
       <!-- ninja name -->
-      <h3>{{ninja.name | uppercase | slice:1:3}}</h3>
+      <h3>{{ninja.name}}</h3>
     </div>
   </li>
 </ul>
